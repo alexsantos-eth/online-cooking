@@ -17,7 +17,12 @@ const App: React.FC<AppProps> = () => {
         }}
       >
         <ambientLight intensity={0.7} color="#ffe4b3" />
-        <OrbitControls makeDefault />
+        <OrbitControls
+          makeDefault
+          zoomSpeed={0.05}
+          rotateSpeed={0.05}
+          panSpeed={0.05}
+        />
         <Rooms />
         <Kitchen />
       </Canvas>
