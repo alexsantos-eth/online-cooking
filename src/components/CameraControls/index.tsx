@@ -12,7 +12,7 @@ const CameraControls: React.FC = () => {
     controls.current.addEventListener("change", () => {
       const { position, rotation } = controls.current.object;
       console.log("Camera Position:", position);
-      console.log("Camera Rotation:", controls.current.object);
+      console.log("Camera Rotation:", rotation);
     });
   }, []);
 
