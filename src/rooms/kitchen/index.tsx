@@ -1,9 +1,8 @@
-import React from 'react';
+import React from "react";
 
-import KitchenProp from './components/KitchenProp';
-import { KITCHEN_RECT } from './components/KitchenProp/utils';
-import { PIXEL } from '../../utils';
-import Light from './components/Light';
+import KitchenProp from "./components/KitchenProp";
+import { KITCHEN_RECT } from "./components/KitchenProp/utils";
+import Light from "./components/Light";
 
 interface KitchenProps {}
 const Kitchen: React.FC<KitchenProps> = () => {
@@ -105,6 +104,7 @@ const Kitchen: React.FC<KitchenProps> = () => {
 
           {/* OVER THIS BLOCK */}
           <>
+            {/* MIDDLE */}
             <KitchenProp
               name="Microwave"
               face="left"
@@ -120,24 +120,6 @@ const Kitchen: React.FC<KitchenProps> = () => {
             />
 
             {/* LEFT */}
-            <pointLight
-              color="#ff3d00"
-              position={
-                [
-                  KITCHEN_RECT.Large_pot.z / 2,
-                  KITCHEN_RECT.Large_countertop.y +
-                    KITCHEN_RECT.Large_pot.y * 1.5,
-                  KITCHEN_RECT.Small_countertop.z +
-                    KITCHEN_RECT.Small_countertop.x +
-                    KITCHEN_RECT.Fridge.x +
-                    KITCHEN_RECT.Large_countertop.x / 2 -
-                    KITCHEN_RECT.Microwave.x / 2 +
-                    KITCHEN_RECT.Microwave.x +
-                    KITCHEN_RECT.Large_pot.x +
-                    1,
-                ].map((pos) => pos * PIXEL) as [number, number, number]
-              }
-            />
             <KitchenProp
               name="Large_pot"
               face="left"
@@ -193,7 +175,7 @@ const Kitchen: React.FC<KitchenProps> = () => {
         </>
       </>
 
-      {/* RIGHT PART */}
+      {/* TOP PART */}
       <>
         {/* FIRST BLOCK */}
         <>
@@ -272,21 +254,27 @@ const Kitchen: React.FC<KitchenProps> = () => {
         </>
       </>
 
-      {/* RIGHT TOP PART */}
+      {/* TOP TOP PART */}
       <>
         {/* SECOND AND THIRD BLOCK */}
-        <KitchenProp
-          name="Large_countertop"
-          y={KITCHEN_RECT.Fridge.y + KITCHEN_RECT.Large_countertop.y / 2}
-          x={KITCHEN_RECT.Small_countertop.x}
-        />
+        <>
+          <KitchenProp
+            name="Large_countertop"
+            y={KITCHEN_RECT.Fridge.y + KITCHEN_RECT.Large_countertop.y / 2}
+            x={KITCHEN_RECT.Small_countertop.x}
+          />
+        </>
 
         {/* FOURTH AND FIVE BLOCK */}
-        <KitchenProp
-          name="Large_countertop"
-          y={KITCHEN_RECT.Fridge.y + KITCHEN_RECT.Large_countertop.y / 2}
-          x={KITCHEN_RECT.Small_countertop.x + KITCHEN_RECT.Large_countertop.x}
-        />
+        <>
+          <KitchenProp
+            name="Large_countertop"
+            y={KITCHEN_RECT.Fridge.y + KITCHEN_RECT.Large_countertop.y / 2}
+            x={
+              KITCHEN_RECT.Small_countertop.x + KITCHEN_RECT.Large_countertop.x
+            }
+          />
+        </>
       </>
 
       {/* CENTER PART */}
