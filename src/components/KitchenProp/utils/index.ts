@@ -14,10 +14,10 @@ export const KITCHEN_RECT: Record<
   Glass_plant_pot: { x: 20, y: 0, z: 0 },
   Large_countertop: { x: 44, y: 16, z: 16 },
   Large_pot: { x: 5, y: 6, z: 8 },
-  Large_wooden_table: { x: 47, y: 0, z: 19 },
+  Large_wooden_table: { x: 47, y: 0, z: 21 },
   Light_fixture: { x: 10, y: 0, z: 6 },
   Small_countertop: { x: 20, y: 16, z: 17 },
   Small_wooden_table: { x: 20, y: 0, z: 0 },
-  Wood_chair: { x: 8, y: 0, z: 6 },
+  Wood_chair: { x: 8, y: 0, z: 11 },
   Frying_pan: { x: 20, y: 0, z: 0 },
 };

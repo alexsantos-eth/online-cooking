@@ -293,9 +293,7 @@ const Kitchen: React.FC<KitchenProps> = () => {
         <>
           <KitchenProp
             name="Large_wooden_table"
-            x={
-              KITCHEN_RECT.Small_countertop.x + KITCHEN_RECT.Small_countertop.x
-            }
+            x={KITCHEN_RECT.Small_countertop.x * 2}
             z={KITCHEN_RECT.Stove.z * 3}
           />
         </>
@@ -304,34 +302,28 @@ const Kitchen: React.FC<KitchenProps> = () => {
         <>
           <KitchenProp
             name="Wood_chair"
-            face="front"
             x={
               KITCHEN_RECT.Small_countertop.x +
               KITCHEN_RECT.Small_countertop.x +
               KITCHEN_RECT.Wood_chair.x
             }
-            z={KITCHEN_RECT.Stove.z * 2 + KITCHEN_RECT.Wood_chair.z}
+            z={KITCHEN_RECT.Stove.z * 2 + KITCHEN_RECT.Wood_chair.z / 2}
           />
 
           <KitchenProp
             name="Wood_chair"
-            face="front"
             x={
               KITCHEN_RECT.Small_countertop.x +
               KITCHEN_RECT.Small_countertop.x +
-              KITCHEN_RECT.Wood_chair.x * 3
+              KITCHEN_RECT.Wood_chair.x * 4
             }
-            z={KITCHEN_RECT.Stove.z * 2 + KITCHEN_RECT.Wood_chair.z}
+            z={KITCHEN_RECT.Stove.z * 2 + KITCHEN_RECT.Wood_chair.z / 2}
           />
 
           <KitchenProp
             name="Wood_chair"
             face="left"
-            x={
-              KITCHEN_RECT.Small_countertop.x +
-              KITCHEN_RECT.Small_countertop.x -
-              KITCHEN_RECT.Wood_chair.z
-            }
+            x={KITCHEN_RECT.Small_countertop.x * 2 - KITCHEN_RECT.Wood_chair.z + 1}
             z={
               KITCHEN_RECT.Stove.z * 3 +
               KITCHEN_RECT.Large_wooden_table.z / 2 -
@@ -356,7 +348,7 @@ const Kitchen: React.FC<KitchenProps> = () => {
             x={
               KITCHEN_RECT.Small_countertop.x +
               KITCHEN_RECT.Small_countertop.x +
-              KITCHEN_RECT.Wood_chair.x * 3
+              KITCHEN_RECT.Wood_chair.x * 4
             }
             z={KITCHEN_RECT.Stove.z * 3 + KITCHEN_RECT.Large_wooden_table.z}
           />
