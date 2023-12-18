@@ -18,6 +18,6 @@ export const KITCHEN_RECT: Record<
   Light_fixture: { x: 10, y: 0, z: 6 },
   Small_countertop: { x: 20, y: 16, z: 17 },
   Small_wooden_table: { x: 20, y: 0, z: 0 },
-  Wood_chair: { x: 8, y: 0, z: 10 },
+  Wood_chair: { x: 8, y: 0, z: 6 },
   Frying_pan: { x: 20, y: 0, z: 0 },
 };
