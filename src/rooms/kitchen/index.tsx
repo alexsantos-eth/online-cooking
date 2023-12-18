@@ -323,11 +323,16 @@ const Kitchen: React.FC<KitchenProps> = () => {
           <KitchenProp
             name="Wood_chair"
             face="left"
-            x={KITCHEN_RECT.Small_countertop.x * 2 - KITCHEN_RECT.Wood_chair.z + 1}
+            x={
+              KITCHEN_RECT.Small_countertop.x * 2 -
+              KITCHEN_RECT.Wood_chair.z +
+              1
+            }
             z={
               KITCHEN_RECT.Stove.z * 3 +
               KITCHEN_RECT.Large_wooden_table.z / 2 -
-              KITCHEN_RECT.Wood_chair.x / 2
+              KITCHEN_RECT.Wood_chair.x / 2 -
+              1
             }
           />
 
@@ -364,7 +369,8 @@ const Kitchen: React.FC<KitchenProps> = () => {
             z={
               KITCHEN_RECT.Stove.z * 3 +
               KITCHEN_RECT.Large_wooden_table.z / 2 -
-              KITCHEN_RECT.Wood_chair.x / 2
+              KITCHEN_RECT.Wood_chair.x / 2 -
+              1
             }
           />
         </>
