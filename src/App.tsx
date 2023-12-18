@@ -13,7 +13,7 @@ const App: React.FC<AppProps> = () => {
       <Canvas
         camera={{
           fov: 75,
-          position: [8, 5.5, 7],
+          position: [8, 3.5, 7],
         }}
       >
         <ambientLight intensity={0.7} color="#ffe4b3" />
