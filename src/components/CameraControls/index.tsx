@@ -1,26 +1,20 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-import React, { useEffect, useRef } from "react";
+import React from "react";
 
 import { OrbitControls } from "@react-three/drei";
-import { useFrame } from "@react-three/fiber";
 
-const CameraControls: React.FC = () => {
-  // @ts-ignore
-  const controls: React.MutableRefObject<OrbitControls> = useRef();
-
-  useEffect(() => {
-    controls.current.addEventListener("change", () => {
-      const { position, rotation } = controls.current.object;
-      console.log("Camera Position:", position);
-      console.log("Camera Rotation:", rotation);
-    });
-  }, []);
-
-  useFrame(() => {
-    if (controls.current) controls.current.update();
-  });
-
-  return <OrbitControls ref={controls} makeDefault />;
+interface CameraControlsProps {}
+const CameraControls: React.FC<CameraControlsProps> = () => {
+  return (
+    <OrbitControls
+      makeDefault
+      enableDamping
+      panSpeed={0.05}
+      zoomSpeed={0.05}
+      rotateSpeed={0.05}
+      maxPolarAngle={Math.PI / 2.1}
+      minPolarAngle={Math.PI / 2.6}
+    />
+  );
 };
 
 export default CameraControls;

@@ -1,8 +1,9 @@
-import React from "react";
-import { KITCHEN_RECT } from "../../components/KitchenProp/utils";
-import KitchenProp from "../../components/KitchenProp";
-import { PIXEL } from "../../utils";
-import Light from "./components/Light";
+import React from 'react';
+
+import KitchenProp from './components/KitchenProp';
+import { KITCHEN_RECT } from './components/KitchenProp/utils';
+import { PIXEL } from '../../utils';
+import Light from './components/Light';
 
 interface KitchenProps {}
 const Kitchen: React.FC<KitchenProps> = () => {

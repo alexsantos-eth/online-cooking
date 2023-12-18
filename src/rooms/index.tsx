@@ -1,16 +1,14 @@
-import { Plane, useTexture } from "@react-three/drei";
-import { PIXEL } from "../utils";
-import { KITCHEN_RECT } from "../components/KitchenProp/utils";
+import { Plane, useTexture } from '@react-three/drei';
 
-// CONSTANTS
-const WALL_HEIGHT = 12; //12
-const WALL_WIDTH = 12;
-const WALL_WEIGHT = 0.2;
-
-// CALCULATIONS
-const WALL_HEIGHT_HALF = WALL_HEIGHT / 2;
-const WALL_HEIGHT_HALF_HALF = WALL_HEIGHT_HALF / 2;
-const WALL_WEIGHT_HALF = WALL_WEIGHT / 2;
+import { PIXEL } from '../utils';
+import { KITCHEN_RECT } from './kitchen/components/KitchenProp/utils';
+import {
+  WALL_HEIGHT_HALF,
+  WALL_HEIGHT_HALF_HALF,
+  WALL_WEIGHT,
+  WALL_WEIGHT_HALF,
+  WALL_WIDTH,
+} from './utils';
 
 const Rooms: React.FC = () => {
   const wallTexture = useTexture("assets/textures/wall.jpg");
@@ -62,6 +60,7 @@ const Rooms: React.FC = () => {
         <meshStandardMaterial map={wallTexture} />
       </mesh>
 
+      {/* FLOOR */}
       <Plane
         position={[WALL_WIDTH / 2, 0, WALL_WIDTH / 2]}
         args={[WALL_WIDTH, WALL_WIDTH]}
@@ -72,7 +71,6 @@ const Rooms: React.FC = () => {
       </Plane>
 
       {/* TOP */}
-
       <mesh
         position={[
           WALL_WIDTH / 2,

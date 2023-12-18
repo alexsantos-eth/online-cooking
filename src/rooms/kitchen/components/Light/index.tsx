@@ -1,27 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React from "react";
 
-import { KITCHEN_RECT } from '../../../../components/KitchenProp/utils';
-import { PIXEL } from '../../../../utils';
+import { PIXEL } from "../../../../utils";
+import { KITCHEN_RECT } from "../KitchenProp/utils";
+import { useLightStart } from "./hooks";
 
 interface LightProps {}
 const Light: React.FC<LightProps> = () => {
-  const [lightIntensity, setLightIntensity] = useState(0);
-  useEffect(() => {
-    const intervalId = setInterval(
-      () => {
-        setLightIntensity((prevIntensity) => (prevIntensity === 0 ? 20 : 0));
-      },
-      // BETWEEN 100 AND 300
-      Math.floor(Math.random() * 300) + 150
-    );
-
-    setTimeout(() => {
-      clearInterval(intervalId);
-      setLightIntensity(20);
-    }, 800);
-
-    return () => clearInterval(intervalId);
-  }, []);
+  const [lightIntensity] = useLightStart();
 
   return (
     <spotLight
