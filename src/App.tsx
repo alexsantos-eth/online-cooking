@@ -19,9 +19,12 @@ const App: React.FC<AppProps> = () => {
         <ambientLight intensity={0.7} color="#ffe4b3" />
         <OrbitControls
           makeDefault
+          enableDamping
+          panSpeed={0.05}
           zoomSpeed={0.05}
           rotateSpeed={0.05}
-          panSpeed={0.05}
+          maxPolarAngle={Math.PI / 2.1}
+          minPolarAngle={Math.PI / 2.6}
         />
         <Rooms />
         <Kitchen />
