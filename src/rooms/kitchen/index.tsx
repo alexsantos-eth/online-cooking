@@ -104,7 +104,6 @@ const Kitchen: React.FC<KitchenProps> = () => {
 
           {/* OVER THIS BLOCK */}
           <>
-            {/* MIDDLE */}
             <KitchenProp
               name="Microwave"
               face="left"
@@ -133,7 +132,8 @@ const Kitchen: React.FC<KitchenProps> = () => {
                     KITCHEN_RECT.Large_countertop.x / 2 -
                     KITCHEN_RECT.Microwave.x / 2 +
                     KITCHEN_RECT.Microwave.x +
-                    KITCHEN_RECT.Large_pot.x,
+                    KITCHEN_RECT.Large_pot.x +
+                    1,
                 ].map((pos) => pos * PIXEL) as [number, number, number]
               }
             />
@@ -148,7 +148,8 @@ const Kitchen: React.FC<KitchenProps> = () => {
                 KITCHEN_RECT.Fridge.x +
                 KITCHEN_RECT.Large_countertop.x / 2 -
                 KITCHEN_RECT.Microwave.x / 2 +
-                KITCHEN_RECT.Microwave.x
+                KITCHEN_RECT.Microwave.x +
+                1
               }
             />
           </>

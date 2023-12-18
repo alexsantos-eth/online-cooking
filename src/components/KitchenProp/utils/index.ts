@@ -4,7 +4,7 @@ export const KITCHEN_RECT: Record<
   KitchenPropName,
   { x: number; y: number; z: number; padding?: number }
 > = {
-  Microwave: { x: 20, y: 0, z: 0 },
+  Microwave: { x: 20, y: 15, z: 12 },
   Sink: { x: 20, y: 0, z: 0 },
   Stove: { x: 20, y: 19, z: 16 },
   Fridge: { x: 20, y: 40, z: 0 },
