@@ -1,19 +1,20 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from "react";
 import {
   Box3,
   ClampToEdgeWrapping,
   Group,
   MeshBasicMaterial,
+  MeshPhongMaterial,
   NearestFilter,
   Object3D,
   Object3DEventMap,
   TextureLoader,
-} from 'three';
+} from "three";
 
-import { Clone, CloneProps, useFBX } from '@react-three/drei';
+import { Clone, CloneProps, useFBX } from "@react-three/drei";
 
-import { PIXEL } from '../../utils';
-import { KitchenPropName } from './types';
+import { PIXEL } from "../../utils";
+import { KitchenPropName } from "./types";
 
 interface KitchenModelProps extends Omit<CloneProps, "object"> {
   x?: number;
@@ -48,7 +49,7 @@ const KitchenProp: React.FC<KitchenModelProps> = ({
   fbx.children.forEach((mesh) => {
     (
       mesh as { material: MeshBasicMaterial } & Object3D<Object3DEventMap>
-    ).material = new MeshBasicMaterial({
+    ).material = new MeshPhongMaterial({
       map: texture,
       transparent: true,
     });
@@ -68,6 +69,8 @@ const KitchenProp: React.FC<KitchenModelProps> = ({
 
   return (
     <Clone
+      receiveShadow
+      castShadow
       key={`${name}-${align}-${alignZ}-${z}`}
       object={fbx}
       ref={meshRef}
