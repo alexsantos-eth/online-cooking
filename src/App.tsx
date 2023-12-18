@@ -1,6 +1,6 @@
 import React from "react";
 
-import { OrbitControls, Sky } from "@react-three/drei";
+import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 
 import Rooms from "./rooms";
@@ -13,14 +13,13 @@ const App: React.FC<AppProps> = () => {
       <Canvas
         camera={{
           fov: 75,
-          position: [8, 3.5, 7],
+          position: [11, 3, 10],
         }}
       >
         <ambientLight intensity={0.7} color="#ffe4b3" />
         <OrbitControls makeDefault />
         <Rooms />
         <Kitchen />
-        <Sky />
       </Canvas>
     </div>
   );

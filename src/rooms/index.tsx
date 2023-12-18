@@ -1,7 +1,9 @@
 import { Plane, useTexture } from "@react-three/drei";
+import { PIXEL } from "../utils";
+import { KITCHEN_RECT } from "../components/KitchenProp/utils";
 
 // CONSTANTS
-const WALL_HEIGHT = 18; //12
+const WALL_HEIGHT = 12; //12
 const WALL_WIDTH = 12;
 const WALL_WEIGHT = 0.2;
 
@@ -68,6 +70,24 @@ const Rooms: React.FC = () => {
       >
         <meshStandardMaterial map={floorTexture} />
       </Plane>
+
+      {/* TOP */}
+
+      <mesh
+        position={[
+          WALL_WIDTH / 2,
+          (KITCHEN_RECT.Fridge.y +
+            KITCHEN_RECT.Small_countertop.y / 2 +
+            KITCHEN_RECT.Small_countertop.y +
+            4) *
+            PIXEL,
+          WALL_WIDTH / 2,
+        ]}
+        receiveShadow
+      >
+        <boxGeometry args={[WALL_WIDTH, WALL_WEIGHT, WALL_WIDTH]} />
+        <meshStandardMaterial color="rgb(230, 230, 230)" />
+      </mesh>
     </group>
   );
 };
