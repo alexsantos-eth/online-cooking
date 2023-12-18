@@ -13,7 +13,7 @@ export const KITCHEN_RECT: Record<
   Glass_cup: { x: 2, y: 0, z: 2 },
   Glass_plant_pot: { x: 20, y: 0, z: 0 },
   Large_countertop: { x: 44, y: 16, z: 16 },
-  Large_pot: { x: 20, y: 0, z: 0 },
+  Large_pot: { x: 5, y: 6, z: 8 },
   Large_wooden_table: { x: 47, y: 0, z: 19 },
   Light_fixture: { x: 10, y: 0, z: 6 },
   Small_countertop: { x: 20, y: 16, z: 17 },

@@ -24,7 +24,7 @@ const Kitchen: React.FC<KitchenProps> = () => {
           penumbra={0.1}
           angle={Math.PI}
         />
-        
+
         <KitchenProp
           name="Light_fixture"
           face="left"
@@ -133,6 +133,23 @@ const Kitchen: React.FC<KitchenProps> = () => {
             />
 
             {/* LEFT */}
+            <pointLight
+              color="#ff3d00"
+              position={
+                [
+                  KITCHEN_RECT.Large_pot.z / 2,
+                  KITCHEN_RECT.Large_countertop.y +
+                    KITCHEN_RECT.Large_pot.y * 1.5,
+                  KITCHEN_RECT.Small_countertop.z +
+                    KITCHEN_RECT.Small_countertop.x +
+                    KITCHEN_RECT.Fridge.x +
+                    KITCHEN_RECT.Large_countertop.x / 2 -
+                    KITCHEN_RECT.Microwave.x / 2 +
+                    KITCHEN_RECT.Microwave.x +
+                    KITCHEN_RECT.Large_pot.x,
+                ].map((pos) => pos * PIXEL) as [number, number, number]
+              }
+            />
             <KitchenProp
               name="Large_pot"
               face="left"
