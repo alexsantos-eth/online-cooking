@@ -2,6 +2,7 @@ import React from "react";
 import { KITCHEN_RECT } from "../../components/KitchenProp/utils";
 import KitchenProp from "../../components/KitchenProp";
 import { PIXEL } from "../../utils";
+import Light from "./components/Light";
 
 interface KitchenProps {}
 const Kitchen: React.FC<KitchenProps> = () => {
@@ -9,21 +10,7 @@ const Kitchen: React.FC<KitchenProps> = () => {
     <group>
       {/* LIGHTS  */}
       <>
-        <spotLight
-          position={[
-            (KITCHEN_RECT.Large_countertop.x +
-              KITCHEN_RECT.Light_fixture.x * 2) *
-              PIXEL,
-            3.5,
-            (KITCHEN_RECT.Small_countertop.z +
-              KITCHEN_RECT.Light_fixture.z * 3) *
-              PIXEL,
-          ]}
-          intensity={20}
-          color="#fff"
-          penumbra={0.1}
-          angle={Math.PI}
-        />
+        <Light />
 
         <KitchenProp
           name="Light_fixture"
