@@ -9,7 +9,7 @@ const Kitchen: React.FC<KitchenProps> = () => {
   if (DEVMODE) {
     return (
       <group>
-        <KitchenProp name="Light_fixture" face="left" x="3" z="1" y="1" />
+        <KitchenProp name="Stove" x="3" />
       </group>
     );
   }
@@ -78,6 +78,7 @@ const Kitchen: React.FC<KitchenProps> = () => {
       <>
         {Array.from({ length: 5 }).map((_, i) => (
           <KitchenProp
+            key={`left_top_${i}`}
             name="Small_countertop"
             above={["Fridge", "Large_pot"]}
             face="left"
@@ -147,6 +148,7 @@ const Kitchen: React.FC<KitchenProps> = () => {
       <>
         {Array.from({ length: 5 }).map((_, i) => (
           <KitchenProp
+            key={`front_top_${i}`}
             name="Small_countertop"
             above={["Fridge", "Large_pot"]}
             x={i}

@@ -13,8 +13,11 @@ const CameraControls: React.FC<CameraControlsProps> = () => {
       panSpeed={0.05}
       zoomSpeed={0.05}
       rotateSpeed={0.05}
+      maxDistance={15}
       maxPolarAngle={Math.PI / 2.1}
       minPolarAngle={Math.PI / 2.6}
+      minAzimuthAngle={Math.PI / 2.1 - Math.PI / 2.2}
+      maxAzimuthAngle={Math.PI / 2.1}
     />
   );
 };

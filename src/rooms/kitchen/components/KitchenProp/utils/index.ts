@@ -1,7 +1,7 @@
 import { KitchenPropName } from "../types";
 
 // EVERY BOX IS COMPOSED FOR A GRID OF 32X32X32 PARTS OR n / 2^n, BLOCK = 1 UNIT
-// X AND Y MUST BE INTEGER OR (32 * N) / 32
+// X AND Y MUST BE INTEGER OR (32 * n) / 32
 
 export const KITCHEN_DIMS: Record<
   KitchenPropName,

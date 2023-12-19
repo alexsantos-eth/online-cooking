@@ -24,35 +24,9 @@ const Rooms: React.FC = () => {
         <meshStandardMaterial map={wallTexture} />
       </mesh>
 
-      {/* FRONT */}
-      <mesh
-        position={[
-          WALL_WIDTH / 2,
-          WALL_HEIGHT_HALF_HALF,
-          WALL_WIDTH + WALL_WEIGHT_HALF,
-        ]}
-        receiveShadow
-      >
-        <boxGeometry args={[WALL_WIDTH, WALL_HEIGHT_HALF, WALL_WEIGHT]} />
-        <meshStandardMaterial map={wallTexture} />
-      </mesh>
-
       {/* LEFT */}
       <mesh
         position={[-WALL_WEIGHT_HALF, WALL_HEIGHT_HALF_HALF, WALL_WIDTH / 2]}
-        receiveShadow
-      >
-        <boxGeometry args={[WALL_WEIGHT, WALL_HEIGHT_HALF, WALL_WIDTH]} />
-        <meshStandardMaterial map={wallTexture} />
-      </mesh>
-
-      {/* RIGHT */}
-      <mesh
-        position={[
-          WALL_WIDTH + WALL_WEIGHT_HALF,
-          WALL_HEIGHT_HALF_HALF,
-          WALL_WIDTH / 2,
-        ]}
         receiveShadow
       >
         <boxGeometry args={[WALL_WEIGHT, WALL_HEIGHT_HALF, WALL_WIDTH]} />
