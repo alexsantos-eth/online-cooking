@@ -5,6 +5,7 @@ import { Canvas } from "@react-three/fiber";
 import CameraControls from "./components/CameraControls";
 import Rooms from "./rooms";
 import Kitchen from "./rooms/kitchen";
+import { DEVMODE } from "./utils";
 
 interface AppProps {}
 const App: React.FC<AppProps> = () => {
@@ -16,9 +17,12 @@ const App: React.FC<AppProps> = () => {
           position: [11, 3, 8],
         }}
       >
-        <ambientLight intensity={0.7} color="#ffe4b3" />
+        <ambientLight
+          intensity={DEVMODE ? 2 : 0.7}
+          color={DEVMODE ? "#fff" : "#ffe4b3"}
+        />
         <CameraControls />
-        <Rooms />
+        {<Rooms />}
         <Kitchen />
       </Canvas>
     </div>

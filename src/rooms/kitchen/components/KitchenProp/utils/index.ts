@@ -1,23 +1,26 @@
 import { KitchenPropName } from "../types";
 
-export const KITCHEN_RECT: Record<
+// EVERY BOX IS COMPOSED FOR A GRID OF 32X32X32 PARTS OR n / 2^n, BLOCK = 1 UNIT
+// X AND Y MUST BE INTEGER OR (32 * N) / 32
+
+export const KITCHEN_DIMS: Record<
   KitchenPropName,
   { x: number; y: number; z: number; padding?: number }
 > = {
-  Microwave: { x: 20, y: 15, z: 12 },
-  Sink: { x: 20, y: 0, z: 0 },
-  Stove: { x: 20, y: 19, z: 16 },
-  Fridge: { x: 20, y: 40, z: 0 },
-  Dish: { x: 20, y: 0, z: 0 },
-  Bowl: { x: 7, y: 0, z: 7 },
-  Glass_cup: { x: 2, y: 0, z: 2 },
-  Glass_plant_pot: { x: 20, y: 0, z: 0 },
-  Large_countertop: { x: 44, y: 16, z: 16 },
-  Large_pot: { x: 5, y: 6, z: 8 },
-  Large_wooden_table: { x: 47, y: 0, z: 21 },
-  Light_fixture: { x: 10, y: 0, z: 6 },
-  Small_countertop: { x: 20, y: 16, z: 17 },
-  Small_wooden_table: { x: 20, y: 0, z: 0 },
-  Wood_chair: { x: 8, y: 0, z: 11 },
-  Frying_pan: { x: 20, y: 0, z: 0 },
+  Stove: { x: 32 / 32, y: 30 / 32, z: 32 / 32 },
+  Small_countertop: { x: 32 / 32, y: 25 / 32, z: 32 / 32 },
+  Sink: { x: 32 / 32, y: 27 / 32, z: 32 / 32 },
+  Bowl: { x: 32 / 32, y: 4 / 32, z: 32 / 32 },
+  Dish: { x: 32 / 32, y: 1 / 32, z: 32 / 32 },
+  Fridge: { x: 32 / 32, y: 63 / 32, z: 32 / 32 },
+  Frying_pan: { x: 32 / 32, y: 4 / 32, z: 32 / 32 },
+  Glass_cup: { x: 32 / 32, y: 6 / 32, z: 32 / 32 },
+  Glass_plant_pot: { x: 32 / 32, y: 15 / 32, z: 32 / 32 },
+  Large_countertop: { x: 64 / 32, y: 25 / 32, z: 32 / 32 },
+  Large_pot: { x: 32 / 32, y: 11 / 32, z: 32 / 32 },
+  Large_wooden_table: { x: 64 / 32, y: 25 / 32, z: 32 / 32 },
+  Light_fixture: { x: 32 / 32, y: 55 / 32, z: 32 / 32 },
+  Microwave: { x: 32 / 32, y: 19 / 32, z: 32 / 32 },
+  Small_wooden_table: { x: 32 / 32, y: 25 / 32, z: 32 / 32 },
+  Wood_chair: { x: 32 / 32, y: 15 / 32, z: 32 / 32 },
 };

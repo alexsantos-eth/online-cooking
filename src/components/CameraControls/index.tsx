@@ -1,9 +1,11 @@
 import React from "react";
 
 import { OrbitControls } from "@react-three/drei";
+import { DEVMODE } from "../../utils";
 
 interface CameraControlsProps {}
 const CameraControls: React.FC<CameraControlsProps> = () => {
+  if (DEVMODE) return <OrbitControls makeDefault enableDamping />;
   return (
     <OrbitControls
       makeDefault

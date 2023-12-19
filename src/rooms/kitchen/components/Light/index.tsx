@@ -1,22 +1,24 @@
 import React from "react";
 
 import { PIXEL } from "../../../../utils";
-import { KITCHEN_RECT } from "../KitchenProp/utils";
 import { useLightStart } from "./hooks";
 
-interface LightProps {}
-const Light: React.FC<LightProps> = () => {
+interface LightProps {
+  x?: number | string;
+  y?: number | string;
+  z?: number | string;
+}
+const Light: React.FC<LightProps> = ({ x = 0, y = 0, z = 0 }) => {
   const [lightIntensity] = useLightStart();
+
+  const matrix = [+x, +y, +z];
+  const MatrixX = matrix[0] * PIXEL;
+  const MatrixY = matrix[1] * PIXEL;
+  const MatrixZ = matrix[2] * PIXEL;
 
   return (
     <spotLight
-      position={[
-        (KITCHEN_RECT.Large_countertop.x + KITCHEN_RECT.Light_fixture.x * 2) *
-          PIXEL,
-        3.5,
-        (KITCHEN_RECT.Small_countertop.z + KITCHEN_RECT.Light_fixture.z * 3) *
-          PIXEL,
-      ]}
+      position={[MatrixX, MatrixY, MatrixZ]}
       intensity={lightIntensity}
       color="#fff"
       penumbra={0.1}

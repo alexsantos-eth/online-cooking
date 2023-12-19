@@ -1,14 +1,13 @@
-import { Plane, useTexture } from '@react-three/drei';
+import { Plane, useTexture } from "@react-three/drei";
 
-import { PIXEL } from '../utils';
-import { KITCHEN_RECT } from './kitchen/components/KitchenProp/utils';
+import { DEVMODE, PIXEL } from "../utils";
 import {
   WALL_HEIGHT_HALF,
   WALL_HEIGHT_HALF_HALF,
   WALL_WEIGHT,
   WALL_WEIGHT_HALF,
   WALL_WIDTH,
-} from './utils';
+} from "./utils";
 
 const Rooms: React.FC = () => {
   const wallTexture = useTexture("assets/textures/wall.jpg");
@@ -71,21 +70,15 @@ const Rooms: React.FC = () => {
       </Plane>
 
       {/* TOP */}
-      <mesh
-        position={[
-          WALL_WIDTH / 2,
-          (KITCHEN_RECT.Fridge.y +
-            KITCHEN_RECT.Small_countertop.y / 2 +
-            KITCHEN_RECT.Small_countertop.y +
-            4) *
-            PIXEL,
-          WALL_WIDTH / 2,
-        ]}
-        receiveShadow
-      >
-        <boxGeometry args={[WALL_WIDTH, WALL_WEIGHT, WALL_WIDTH]} />
-        <meshStandardMaterial color="rgb(230, 230, 230)" />
-      </mesh>
+      {!DEVMODE && (
+        <mesh
+          position={[WALL_WIDTH / 2, 3.4 * PIXEL, WALL_WIDTH / 2]}
+          receiveShadow
+        >
+          <boxGeometry args={[WALL_WIDTH, WALL_WEIGHT, WALL_WIDTH]} />
+          <meshStandardMaterial color="rgb(230, 230, 230)" />
+        </mesh>
+      )}
     </group>
   );
 };
