@@ -160,6 +160,30 @@ const Kitchen: React.FC<KitchenProps> = () => {
         <>
           <KitchenProp name="Large_wooden_table" x="3" z="3" />
 
+          {/* OVER THIS TABLE */}
+          <>
+            <KitchenProp
+              name="Bowl"
+              x="3"
+              z="3"
+              above={["Large_wooden_table"]}
+            />
+
+            <KitchenProp
+              name="Dish"
+              x="4"
+              z="3"
+              above={["Large_wooden_table"]}
+            />
+
+            <KitchenProp
+              name="Glass_cup"
+              x="4"
+              z="3"
+              above={["Large_wooden_table", "Dish"]}
+            />
+          </>
+
           {/* CHAIRS */}
           <>
             <KitchenProp name="Wood_chair" x="3" z="2" />
