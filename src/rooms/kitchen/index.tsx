@@ -9,7 +9,7 @@ const Kitchen: React.FC<KitchenProps> = () => {
   if (DEVMODE) {
     return (
       <group>
-        <KitchenProp name="Stove" x="3" />
+        <KitchenProp name="Wood_chair" x="3" z="1" y="1" physics />
       </group>
     );
   }

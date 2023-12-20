@@ -1,3 +1,5 @@
+import { CloneProps } from "@react-three/drei";
+
 export type KitchenPropName =
   | "Bowl"
   | "Dish"
@@ -15,3 +17,14 @@ export type KitchenPropName =
   | "Small_wooden_table"
   | "Stove"
   | "Wood_chair";
+
+export interface KitchenModelProps extends Omit<CloneProps, "object"> {
+  x?: number | string;
+  y?: number | string;
+  z?: number | string;
+  physics?: boolean;
+  physicsStartAnimation?: boolean;
+  above?: KitchenPropName[];
+  name: KitchenPropName;
+  face?: "left" | "right" | "front" | "back";
+}

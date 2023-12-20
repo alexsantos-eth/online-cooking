@@ -1,5 +1,6 @@
 import React from "react";
 
+import { Physics } from "@react-three/cannon";
 import { Canvas } from "@react-three/fiber";
 
 import CameraControls from "./components/CameraControls";
@@ -22,8 +23,10 @@ const App: React.FC<AppProps> = () => {
           color={DEVMODE ? "#fff" : "#ffe4b3"}
         />
         <CameraControls />
-        {<Rooms />}
-        <Kitchen />
+        <Physics gravity={[0, -9.8, 0]}>
+          <Rooms />
+          <Kitchen />
+        </Physics>
       </Canvas>
     </div>
   );

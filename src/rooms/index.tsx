@@ -1,15 +1,27 @@
-import { Plane, useTexture } from "@react-three/drei";
+import { Ref } from 'react';
+import { BufferGeometry, Mesh, NormalBufferAttributes } from 'three';
 
-import { DEVMODE, PIXEL } from "../utils";
+import { usePlane } from '@react-three/cannon';
+import { useTexture } from '@react-three/drei';
+
+import { DEVMODE, PIXEL } from '../utils';
 import {
   WALL_HEIGHT_HALF,
   WALL_HEIGHT_HALF_HALF,
   WALL_WEIGHT,
   WALL_WEIGHT_HALF,
   WALL_WIDTH,
-} from "./utils";
+} from './utils';
 
 const Rooms: React.FC = () => {
+  const [ref] = usePlane(() => ({
+    type: "Static",
+    mass: 1,
+    args: [WALL_WIDTH, WALL_WIDTH],
+    rotation: [-Math.PI / 2, 0, 0],
+    position: [WALL_WIDTH / 2, 0, WALL_WIDTH / 2],
+  }));
+
   const wallTexture = useTexture("assets/textures/wall.jpg");
   const floorTexture = useTexture("assets/textures/floor.jpg");
 
@@ -34,14 +46,15 @@ const Rooms: React.FC = () => {
       </mesh>
 
       {/* FLOOR */}
-      <Plane
-        position={[WALL_WIDTH / 2, 0, WALL_WIDTH / 2]}
-        args={[WALL_WIDTH, WALL_WIDTH]}
-        rotation={[-Math.PI / 2, 0, 0]}
+      <mesh
+        ref={
+          ref as unknown as Ref<Mesh<BufferGeometry<NormalBufferAttributes>>>
+        }
         receiveShadow
       >
+        <planeGeometry args={[WALL_WIDTH, WALL_WIDTH]} />
         <meshStandardMaterial map={floorTexture} />
-      </Plane>
+      </mesh>
 
       {/* TOP */}
       {!DEVMODE && (
