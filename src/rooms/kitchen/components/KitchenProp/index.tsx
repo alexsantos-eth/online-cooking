@@ -138,8 +138,8 @@ const KitchenProp: React.FC<KitchenModelProps> = (props) => {
 };
 
 KitchenProp.defaultProps = {
-  physics: true,
-  physicsStartAnimation: true,
+  physics: false,
+  physicsStartAnimation: false,
   face: "front",
 };
 
