@@ -1,45 +1,27 @@
-import React from "react";
+import React, { Ref } from "react";
+import { BufferGeometry, Mesh, NormalBufferAttributes } from "three";
 
-import { Clone, CloneProps } from "@react-three/drei";
+import { useBox } from "@react-three/cannon";
+import { Clone } from "@react-three/drei";
 
 import { DEVMODE, PIXEL } from "../../../../utils";
 import { useFBXModel } from "./hooks";
-import { KitchenPropName } from "./types";
-import { KITCHEN_DIMS } from "./utils";
+import { getMatrixFromProps } from "./tools";
+import { KitchenModelProps } from "./types";
+import { KITCHEN_DIMS, KITCHEN_RECTS } from "./utils";
 
-interface KitchenModelProps extends Omit<CloneProps, "object"> {
-  x?: number | string;
-  y?: number | string;
-  z?: number | string;
-  above?: KitchenPropName[];
-  name: KitchenPropName;
-  face?: "left" | "right" | "front" | "back";
-}
-
-const KitchenProp: React.FC<KitchenModelProps> = ({
+const KitchenPropMesh: React.FC<KitchenModelProps> = ({
   name,
-  x = 0,
-  y = 0,
-  z = 0,
-  above,
+  physics,
   face = "front",
   ...meshProps
 }) => {
   const { fbx } = useFBXModel(name);
 
-  const matrix = [+x, +y, +z];
-  const MatrixX = matrix[0] * PIXEL;
-
-  const MatrixY =
-    (above
-      ? above?.map((a) => KITCHEN_DIMS[a].y).reduce((a, b) => a + b, 0) ?? 0
-      : matrix[1]) * PIXEL;
-  const MatrixZ = matrix[2] * PIXEL;
-
   const isRotated = ["right", "left"].includes(face);
 
   return (
-    <mesh position={[MatrixX, MatrixY, MatrixZ]}>
+    <>
       {DEVMODE && (
         <mesh
           rotation={[
@@ -54,13 +36,17 @@ const KitchenProp: React.FC<KitchenModelProps> = ({
             0,
           ]}
           position={[
-            (PIXEL *
-              (isRotated ? KITCHEN_DIMS[name].z : KITCHEN_DIMS[name].x)) /
-              2,
-            (PIXEL * KITCHEN_DIMS[name].y) / 2,
-            (PIXEL *
-              (isRotated ? KITCHEN_DIMS[name].x : KITCHEN_DIMS[name].z)) /
-              2,
+            physics
+              ? 0
+              : (PIXEL *
+                  (isRotated ? KITCHEN_DIMS[name].z : KITCHEN_DIMS[name].x)) /
+                2,
+            physics ? 0 : (PIXEL * KITCHEN_DIMS[name].y) / 2,
+            physics
+              ? 0
+              : (PIXEL *
+                  (isRotated ? KITCHEN_DIMS[name].x : KITCHEN_DIMS[name].z)) /
+                2,
           ]}
         >
           <boxGeometry
@@ -91,16 +77,70 @@ const KitchenProp: React.FC<KitchenModelProps> = ({
           0,
         ]}
         position={[
-          (PIXEL * (isRotated ? KITCHEN_DIMS[name].z : KITCHEN_DIMS[name].x)) /
-            2,
-          0,
-          (PIXEL * (isRotated ? KITCHEN_DIMS[name].x : KITCHEN_DIMS[name].z)) /
-            2,
+          physics
+            ? 0
+            : (PIXEL *
+                (isRotated ? KITCHEN_DIMS[name].z : KITCHEN_DIMS[name].x)) /
+              2,
+          physics ? -((KITCHEN_DIMS[name].y / 2) * PIXEL) : 0,
+          physics
+            ? 0
+            : (PIXEL *
+                (isRotated ? KITCHEN_DIMS[name].x : KITCHEN_DIMS[name].z)) /
+              2,
         ]}
         {...meshProps}
       />
+    </>
+  );
+};
+
+export const KitchenPropWithPhysics: React.FC<KitchenModelProps> = (props) => {
+  const { MatrixX, MatrixY, MatrixZ } = getMatrixFromProps(props);
+
+  const [ref] = useBox(() => ({
+    mass: 1,
+    type: "Dynamic",
+    position: [
+      MatrixX,
+      MatrixY + (props.physicsStartAnimation ? 1 : 0),
+      MatrixZ + (KITCHEN_RECTS[props.name].z / 2) * PIXEL,
+    ],
+    args: [
+      PIXEL * KITCHEN_RECTS[props.name].x,
+      PIXEL * KITCHEN_RECTS[props.name].y,
+      PIXEL * KITCHEN_RECTS[props.name].z,
+    ],
+  }));
+
+  return (
+    <mesh
+      ref={ref as unknown as Ref<Mesh<BufferGeometry<NormalBufferAttributes>>>}
+    >
+      <KitchenPropMesh {...props} />
     </mesh>
   );
+};
+
+export const KitchenPropStatic: React.FC<KitchenModelProps> = (props) => {
+  const { MatrixX, MatrixY, MatrixZ } = getMatrixFromProps(props);
+
+  return (
+    <mesh position={[MatrixX, MatrixY, MatrixZ]}>
+      <KitchenPropMesh {...props} />
+    </mesh>
+  );
+};
+
+const KitchenProp: React.FC<KitchenModelProps> = (props) => {
+  if (props.physics) return <KitchenPropWithPhysics {...props} />;
+  return <KitchenPropStatic {...props} />;
+};
+
+KitchenProp.defaultProps = {
+  physics: true,
+  physicsStartAnimation: true,
+  face: "front",
 };
 
 export default KitchenProp;
