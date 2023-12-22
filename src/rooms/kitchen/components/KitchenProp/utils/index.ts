@@ -43,7 +43,7 @@ export const KITCHEN_RECTS: Record<
   Large_pot: { x: 14 / 32, y: 11 / 32, z: 14 / 32 },
   Large_wooden_table: { x: 74 / 32, y: 25 / 32, z: 32 / 32 },
   Light_fixture: { x: 9 / 32, y: 6 / 32, z: 32 / 32 },
-  Microwave: { x: 31 / 32, y: 19 / 32, z: 19 / 32 },
+  Microwave: { x: 31 / 32, y: 18 / 32, z: 19 / 32 },
   Small_wooden_table: { x: 32 / 32, y: 25 / 32, z: 32 / 32 },
   Wood_chair: { x: 14 / 32, y: 15 / 32, z: 16 / 32 },
 };

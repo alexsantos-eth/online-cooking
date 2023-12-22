@@ -1,37 +1,30 @@
-import { useState, useEffect } from "react";
+import { useEffect, useRef } from "react";
 
-export const usePlayerControls = () => {
-  const keys: Record<string, string> = {
-    KeyW: "forward",
-    KeyS: "backward",
-    KeyA: "left",
-    KeyD: "right",
-    Space: "jump",
-  };
-  const moveFieldByKey = (key: string) => keys[key];
-
-  const [movement, setMovement] = useState({
-    forward: false,
-    backward: false,
-    left: false,
-    right: false,
-    jump: false,
-  });
+/**
+ * The `useKeyboard` function is a custom hook in TypeScript that allows you to track which keys are
+ * currently being pressed on the keyboard.
+ * @returns The `useKeyboard` function returns the `keysDown` object, which is a `useRef` object
+ * containing a record of keys that are currently being pressed down.
+ */
+export const useKeyboard = () => {
+  const keysDown = useRef<Record<string, boolean>>({});
 
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) =>
-      setMovement((m) => ({ ...m, [moveFieldByKey(e.code)]: true }));
-    const handleKeyUp = (e: KeyboardEvent) =>
-      setMovement((m) => ({ ...m, [moveFieldByKey(e.code)]: false }));
+    const handleKeyDown = (event: KeyboardEvent) => {
+      keysDown.current[event.key] = true;
+    };
+    const handleKeyUp = (event: KeyboardEvent) => {
+      keysDown.current[event.key] = false;
+    };
 
-    document.addEventListener("keydown", handleKeyDown);
-    document.addEventListener("keyup", handleKeyUp);
+    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("keyup", handleKeyUp);
 
     return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-      document.removeEventListener("keyup", handleKeyUp);
+      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("keyup", handleKeyUp);
     };
   }, []);
 
-  return movement;
+  return keysDown;
 };
