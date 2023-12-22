@@ -1,18 +1,13 @@
 import React from "react";
 
+import { PointerLockControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
+import { Physics } from "@react-three/rapier";
 
 import CameraControls from "./components/CameraControls";
 import Rooms from "./rooms";
 import Kitchen from "./rooms/kitchen";
 import { DEVMODE } from "./utils";
-import {
-  KeyboardControls,
-  OrbitControls,
-  PointerLockControls,
-} from "@react-three/drei";
-import Character from "./components/Character";
-import { Physics } from "@react-three/rapier";
 
 interface AppProps {}
 const App: React.FC<AppProps> = () => {
