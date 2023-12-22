@@ -79,7 +79,9 @@ export const KitchenPropWithPhysics: React.FC<KitchenModelProps> = (props) => {
       mass={props.mass}
       position={[
         MatrixX + (PIXEL * KITCHEN_DIMS[name][isRotated ? "z" : "x"]) / 2,
-        MatrixY + (PIXEL * KITCHEN_DIMS[name].y) / 2,
+        MatrixY +
+          (PIXEL * KITCHEN_DIMS[name].y) / 2 +
+          (props.physicsStartAnimation ? 0.5 : 0),
         MatrixZ + (PIXEL * KITCHEN_DIMS[name][isRotated ? "x" : "z"]) / 2,
       ]}
     >
@@ -112,7 +114,7 @@ const KitchenProp: React.FC<KitchenModelProps> = (props) => {
 
 KitchenProp.defaultProps = {
   physics: false,
-  physicsStartAnimation: false,
+  physicsStartAnimation: true,
   face: "front",
 };
 
