@@ -1,4 +1,5 @@
 import { CloneProps } from "@react-three/drei";
+import { GroupProps } from "@react-three/fiber";
 
 export type KitchenPropName =
   | "Bowl"
@@ -18,12 +19,15 @@ export type KitchenPropName =
   | "Stove"
   | "Wood_chair";
 
-export interface KitchenModelProps extends Omit<CloneProps, "object"> {
+type CloneLProps = GroupProps & Omit<CloneProps, "object">;
+export interface KitchenModelProps extends CloneLProps {
   x?: number | string;
   y?: number | string;
   z?: number | string;
+  physicsType?: "Static" | "Dynamic" | "Kinematic";
   physics?: boolean;
   physicsStartAnimation?: boolean;
+  mass?: number;
   above?: KitchenPropName[];
   name: KitchenPropName;
   face?: "left" | "right" | "front" | "back";

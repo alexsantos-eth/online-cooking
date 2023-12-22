@@ -1,12 +1,18 @@
 import React from "react";
 
-import { Physics } from "@react-three/cannon";
 import { Canvas } from "@react-three/fiber";
 
 import CameraControls from "./components/CameraControls";
 import Rooms from "./rooms";
 import Kitchen from "./rooms/kitchen";
 import { DEVMODE } from "./utils";
+import {
+  KeyboardControls,
+  OrbitControls,
+  PointerLockControls,
+} from "@react-three/drei";
+import Character from "./components/Character";
+import { Physics } from "@react-three/rapier";
 
 interface AppProps {}
 const App: React.FC<AppProps> = () => {
@@ -22,10 +28,23 @@ const App: React.FC<AppProps> = () => {
           intensity={DEVMODE ? 2 : 0.7}
           color={DEVMODE ? "#fff" : "#ffe4b3"}
         />
-        <CameraControls />
-        <Physics gravity={[0, -9.8, 0]}>
+        {DEVMODE && <axesHelper position={[0, 0, 0]} />}
+        {DEVMODE ? <PointerLockControls /> : <CameraControls />}
+        <Physics debug={DEVMODE} gravity={[0, -9.8, 0]}>
           <Rooms />
           <Kitchen />
+          {/* <OrbitControls makeDefault enableDamping /> */}
+          {/* <PointerLockControls />
+          <KeyboardControls
+            map={[
+              { keys: ["w"], name: "forward" },
+              { keys: ["s"], name: "backward" },
+              { keys: ["a"], name: "left" },
+              { keys: ["d"], name: "right" },
+            ]}
+          >
+            <Character />
+          </KeyboardControls> */}
         </Physics>
       </Canvas>
     </div>

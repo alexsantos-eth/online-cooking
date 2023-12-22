@@ -1,11 +1,11 @@
 import { PIXEL } from "../../utils";
 
 // CONSTANTS
-const WALL_X_BLOCK_SIZE = 9;
-const WALL_Y_BLOCK_SIZE = 9;
+const WALL_X_BLOCK_SIZE = 10;
+const WALL_Y_BLOCK_SIZE = 7;
 
-export const WALL_HEIGHT = WALL_Y_BLOCK_SIZE * PIXEL;
-export const WALL_WIDTH = WALL_X_BLOCK_SIZE * PIXEL;
+export const WALL_HEIGHT = (WALL_Y_BLOCK_SIZE / 2) * PIXEL;
+export const WALL_WIDTH = (WALL_X_BLOCK_SIZE / 2) * PIXEL;
 export const WALL_WEIGHT = 0.2;
 
 // CALCULATIONS
