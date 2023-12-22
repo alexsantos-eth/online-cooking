@@ -33,7 +33,7 @@ export const KITCHEN_RECTS: Record<
   Stove: { x: 32 / 32, y: 30 / 32, z: 26 / 32 },
   Small_countertop: { x: 32 / 32, y: 25 / 32, z: 26 / 32 },
   Sink: { x: 32 / 32, y: 27 / 32, z: 32 / 32 },
-  Bowl: { x: 16 / 32, y: 4 / 32, z: 14 / 32 },
+  Bowl: { x: 11 / 32, y: 7 / 32, z: 11 / 32 },
   Dish: { x: 9 / 32, y: 1 / 32, z: 9 / 32 },
   Fridge: { x: 32 / 32, y: 63 / 32, z: 34 / 32 },
   Frying_pan: { x: 20 / 32, y: 4 / 32, z: 20 / 32 },
