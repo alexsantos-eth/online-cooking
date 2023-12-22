@@ -31,7 +31,7 @@ export const KITCHEN_RECTS: Record<
   { x: number; y: number; z: number }
 > = {
   Stove: { x: 32 / 32, y: 30 / 32, z: 26 / 32 },
-  Small_countertop: { x: 32 / 32, y: 25 / 32, z: 26 / 32 },
+  Small_countertop: { x: 32 / 32, y: 26 / 32, z: 26 / 32 },
   Sink: { x: 32 / 32, y: 27 / 32, z: 32 / 32 },
   Bowl: { x: 11 / 32, y: 7 / 32, z: 11 / 32 },
   Dish: { x: 9 / 32, y: 1 / 32, z: 9 / 32 },
@@ -41,7 +41,7 @@ export const KITCHEN_RECTS: Record<
   Glass_plant_pot: { x: 7 / 32, y: 15 / 32, z: 7 / 32 },
   Large_countertop: { x: 69 / 32, y: 25 / 32, z: 27 / 32 },
   Large_pot: { x: 14 / 32, y: 11 / 32, z: 14 / 32 },
-  Large_wooden_table: { x: 74 / 32, y: 25 / 32, z: 32 / 32 },
+  Large_wooden_table: { x: 75 / 32, y: 26 / 32, z: 32 / 32 },
   Light_fixture: { x: 9 / 32, y: 6 / 32, z: 32 / 32 },
   Microwave: { x: 31 / 32, y: 18 / 32, z: 19 / 32 },
   Small_wooden_table: { x: 32 / 32, y: 25 / 32, z: 32 / 32 },
