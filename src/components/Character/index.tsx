@@ -1,11 +1,12 @@
-import { useRef, useState } from "react";
+/* eslint-disable prefer-const */
+import { useState } from "react";
 import * as THREE from "three";
 
 import { useKeyboardControls } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { CapsuleCollider, RigidBody } from "@react-three/rapier";
 
-const Character: React.FC = (props) => {
+const Character: React.FC = () => {
   const [orientation, setOrientation] = useState(Math.PI);
   const [, getKeys] = useKeyboardControls();
 
@@ -117,19 +118,18 @@ const Character: React.FC = (props) => {
     /**
      * Camera Movement
      */
-    if (!props.orbitControls) {
-      const cameraPosition = new THREE.Vector3();
 
-      cameraPosition.z += 5;
-      cameraPosition.y += 2.5;
+    const cameraPosition = new THREE.Vector3();
 
-      const cameraTarget = new THREE.Vector3();
+    cameraPosition.z += 5;
+    cameraPosition.y += 2.5;
 
-      cameraTarget.y += 0.25;
+    const cameraTarget = new THREE.Vector3();
 
-      state.camera.position.copy(cameraPosition);
-      state.camera.lookAt(cameraTarget);
-    }
+    cameraTarget.y += 0.25;
+
+    state.camera.position.copy(cameraPosition);
+    state.camera.lookAt(cameraTarget);
   });
 
   return (

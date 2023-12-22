@@ -81,7 +81,10 @@ export const KitchenPropWithPhysics: React.FC<KitchenModelProps> = (props) => {
         MatrixX + (PIXEL * KITCHEN_DIMS[name][isRotated ? "z" : "x"]) / 2,
         MatrixY +
           (PIXEL * KITCHEN_DIMS[name].y) / 2 +
-          (props.physicsStartAnimation ? 0.5 : 0),
+          (props.physicsStartAnimation
+            ? // RANDOM BETWEEN 0 AND 0.5
+              Math.random() / 2
+            : 0),
         MatrixZ + (PIXEL * KITCHEN_DIMS[name][isRotated ? "x" : "z"]) / 2,
       ]}
     >
